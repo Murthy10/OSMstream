@@ -1,7 +1,7 @@
 # OSMstream
 The repository provides a docker container which collects the Augmented diffs (change sets) from OpenStreetMap.
-The diffs are provided in XML format and can be accessed over the overpass API. For further use we convert them into JSON format and publish them with apache kafka.
-After that the data is ready for a streaming database of your choice.
+The original "diffs" are provided in XML format and are accessed over the overpass API. For use this codes converts theses diffs into JSON format and publishes them using Apache Kafka.
+After that the data is ready for a stream based consumer of your choice.
 
 ![Overview](img/streaming_db.png)
 
@@ -23,7 +23,7 @@ docker exec -it osmstream bash
 
 
 ##Usage
-The idea is now to test your streaming database with the OSM diff data provided by kafka.
+The idea is now to test your streaming database with the OSM diff data provided by Kafka.
 
 ###Kafka settings
 - Host:     localhost
@@ -32,7 +32,7 @@ The idea is now to test your streaming database with the OSM diff data provided 
 
 ###Benchmak
 Benchmarking is a very difficult topic and strongly depends on various parameters like the underlying hardware.
-So we decide to make this as hardware independent as possible. The idea is to produce kafka messages with "a lot of text" and for the consumer the goal is to count the words of the text and track the used processing time.
+So we decide to make this as hardware independent as possible. The idea is to produce Kafka messages with "a lot of text" and for the consumer the goal is to count the words of the text and track the used processing time.
 The we repeat this process with the double text length and so on. After a few iteration you can relate the processing time and the text length.
 
 Start the message producer: 
